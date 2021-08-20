@@ -27,7 +27,7 @@ domain: gtiley.github.io
 baseurl: /EvolutionaryGenomics # the subpath of your site, e.g. /blog
 url: https://gtiley.github.io # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username:
-github_username:  gtiley
+github_username: gtiley
 
 header_pages:
    - about.md
