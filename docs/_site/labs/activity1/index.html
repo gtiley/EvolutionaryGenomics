@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Getting started with computing | Evolutionary Genomics 2021</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Getting started with computing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Genomics class with focus on contemporary sequencing technologies and non-model organisms" />
+<meta property="og:description" content="Genomics class with focus on contemporary sequencing technologies and non-model organisms" />
+<link rel="canonical" href="http://localhost:4000/EvolutionaryGenomics/labs/activity1/" />
+<meta property="og:url" content="http://localhost:4000/EvolutionaryGenomics/labs/activity1/" />
+<meta property="og:site_name" content="Evolutionary Genomics 2021" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Getting started with computing" />
+<script type="application/ld+json">
+{"description":"Genomics class with focus on contemporary sequencing technologies and non-model organisms","headline":"Getting started with computing","url":"http://localhost:4000/EvolutionaryGenomics/labs/activity1/","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/EvolutionaryGenomics/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/EvolutionaryGenomics/feed.xml" title="Evolutionary Genomics 2021" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/EvolutionaryGenomics/">Evolutionary Genomics 2021</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/EvolutionaryGenomics/about/">About</a><a class="page-link" href="/EvolutionaryGenomics/people/">People</a><a class="page-link" href="/EvolutionaryGenomics/schedule/">Schedule</a><a class="page-link" href="/EvolutionaryGenomics/conduct/">Code of Conduct</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Getting started with computing</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Our first day is simply making sure everybody has the basic tools to participate in the course. There are four goals today:</p>
+<ol>
+  <li>Log on to the DCC cluster</li>
+  <li>Perform basic UNIX operations</li>
+  <li>Run some scripts</li>
+  <li>Recognize the difference between interpreted and compiled languages</li>
+</ol>
+
+<p>Some or all of this may be very familiar to many of you. Today is about getting everybody on the same page for advancing later in the course. Please take time to help your less familiar neighbors.</p>
+
+<p>There may be some necessary downloads for your own computers in order to log onto the cluster and edit files.</p>
+
+<p><strong>Windows</strong></p>
+<ul>
+  <li><a href="https://git-for-windows.github.io/">Git for Windows</a></li>
+  <li><a href="https://notepad-plus-plus.org/download/v8.1.3/">Notepad++</a></li>
+  <li><a href="https://strawberryperl.com/">Perl</a></li>
+  <li><a href="https://www.python.org/downloads/windows/">Python</a></li>
+</ul>
+
+<p><strong>Mac</strong></p>
+<ul>
+  <li><a href="https://www.barebones.com/products/bbedit/">BBEdit</a></li>
+  <li>I recommend downloading the command line tools from the developer <a href="https://developer.apple.com/">website</a></li>
+  <li>Although Macs come with Python v2.7, Python 2 is no longer supported. Current and future applications are moving to Python 3 and here is a decent <a href="https://docs.python-guide.org/starting/install3/osx/">guide</a> for not messing up your system</li>
+</ul>
+
+<p><strong>Linux</strong></p>
+<ul>
+  <li>you should be set up</li>
+</ul>
+
+<p>More downloads will arise as the course progresses.</p>
+
+<h3 id="moving-files-between-your-computer-and-the-cluster">Moving files between your computer and the cluster</h3>
+<p>Let’s start by downloading materials for today. This will become familiar, we will typically download a tarball of data and examples and work from there.
+We will use the <code class="language-plaintext highlighter-rouge">wget</code> command to download the tarball directly to the cluster. <code class="language-plaintext highlighter-rouge">wget</code> is a linux thing - the mac equivalent is curl. In your home directory try:
+<code class="language-plaintext highlighter-rouge">wget https://raw.githubusercontent.com/gtiley/misc/master/mbl2019.txt</code></p>
+
+<p>First, we will need to decompress the tarball
+<code class="language-plaintext highlighter-rouge">tar -xzvf activity1.tgz</code>
+Then we can look around at the file</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	cd activity1
+	ls
+	cd data
+	ls
+</code></pre></div></div>
+<p>We <em>change directory</em> with <code class="language-plaintext highlighter-rouge">cd</code> and <em>list</em> files with <code class="language-plaintext highlighter-rouge">ls</code>. These are UNIX commands that will help us navigate the cluster. Let’s have a look at one of the files in <code class="language-plaintext highlighter-rouge">data</code> - <code class="language-plaintext highlighter-rouge">welcomeMessage.txt</code>. We will open it with a text editor directly in the command line.
+	emacs welcomeMessage.txt
+There is some information about myself in there. But we want to know about you! Use the arrows to edit the information about yourself. Keep the research interest to 6 words only. Saving changes through a text editor such as emacs requires keyboard shortcuts - <code class="language-plaintext highlighter-rouge">control</code> + <code class="language-plaintext highlighter-rouge">x</code> + <code class="language-plaintext highlighter-rouge">s</code> to save and <code class="language-plaintext highlighter-rouge">control</code> + <code class="language-plaintext highlighter-rouge">x</code> + <code class="language-plaintext highlighter-rouge">c</code> to close.
+But now we need to rename the file to make it unique. We can rename a file with <em>move</em> <code class="language-plaintext highlighter-rouge">mv</code>. We will then <em>copy</em> it to a shared directory using <code class="language-plaintext highlighter-rouge">cp</code>.
+	mv welcomeMessage.txt welcomeMessage.YOUR_NAME.txt
+	cp welcomeMessage.YOUR_NAME.txt /datacommons/yoderlab/users/gtiley/evolutionaryGenomics/activity1</p>
+
+<h3 id="interpreted-code---scripting">Interpreted Code - Scripting</h3>
+<p>Most genomics applications happen, at least in part, with scripting. Scripting languages are great for performing operations on strings or text, like ACGT. They are also not bad for a human to understand and hide the messiness of turning human-readable code to machine-readable code (compiling). That is the work of the interpreter, which happens in real-time. Scripting languages include Python, Perl, and Ruby. You can also accomplish a bit with bash and awk, but my heart-felt recommendation would be to dedicate some time into learning Python if you are new to this.</p>
+
+<p>Let’s see some simple scripts in action and hint at how they might be useful. In <code class="language-plaintext highlighter-rouge">data/</code>, you will find three files <code class="language-plaintext highlighter-rouge">*.params</code> with some results from a model.</p>
+
+<p>In all omics data, we are often iterating over many things (e.g. loci, individuals, populations, bootstrap replicates) to do something repetitive. Let’s execute three different scripts that will allow us to loop over the <code class="language-plaintext highlighter-rouge">*.params</code> files.</p>
+
+<h4 id="loopfilessh---a-simple-bash-script">loopFiles.sh - a simple bash script</h4>
+<p>The first line is a shebang. This is letting your computer know which interpreter program to use. Our first example is using bash, which will be available on any UNIX system. First, all of the <code class="language-plaintext highlighter-rouge">*,param</code> files are collected into a single array or list. We then iterate over the number of elements in that array, print the element to the screen, and quit the script.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash                                                                                                                   
+
+fileList="../data/*.params"
+for i in $fileList
+do
+  echo "$i"
+done
+</code></pre></div></div>
+<p>Let’s run this simple script. We can execute programs that are not in our <em>path</em> by specifying the location. If we are in the same folder that we want to execute a program from we would go <code class="language-plaintext highlighter-rouge">./loopFiles.sh</code> such that <code class="language-plaintext highlighter-rouge">.</code> means <em>here</em>.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ~/YOUR_PATH/evolutionaryGenomics/activity1/scripts
+./loopFiles.sh
+</code></pre></div></div>
+<p>Already a problem, nothing happens. To run a script this way, we need to let the computer know it is an executable program. <code class="language-plaintext highlighter-rouge">chmod</code> can be used to change the execute, read, and write permissions of files and folders.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chmod u+x loopFiles.sh
+./loopFiles.sh
+</code></pre></div></div>
+<p>The file names should now print to your screen.</p>
+
+<h4 id="loopfilespl---give-me-perl">loopFiles.pl - give me Perl</h4>
+<p>Perl is a popular scripting language that is the glue of the internet and played a large role in early genomics applications. It still is, but has waned in popularity as various R packages and the more recent Python has exploded in popularity. It will give you more flexibility than bash in the long-term and can be quick to learn. Here, we use the <em>glob</em> function to get an array of the file names. We then loop over array elements from their starting position (0) to the end (2) by getting the number of elements in the array with <em>scalar</em> and subtracting 1.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/usr/bin/perl -w                                                                                                            
+
+@fileList = glob("../data/*.txt");
+for $i (0..(scalar(@fileList)-1))
+{
+    print "$fileList[$i]\n";
+}
+exit;
+</code></pre></div></div>
+<p>We could make this script executable as we did with the bash script, or we could go</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl loopFiles.pl
+</code></pre></div></div>
+
+<h4 id="loopfilespy---python-and-its-libraries">loopFiles.py - Python and its libraries</h4>
+<p>Python is certainly the zeitgeist of bioinformatics and genomics today. Python is more recent than Perl. Although they do similar things, there has been a lot of development on improving abstraction and this is supported by many libraries (or modules). These are groups of functions that you let python know you want to use with the <code class="language-plaintext highlighter-rouge">import &lt;module&gt;</code> syntax. Here we load two very basic modules <code class="language-plaintext highlighter-rouge">sys</code> and <code class="language-plaintext highlighter-rouge">os</code>, but a third one we actually use, <code class="language-plaintext highlighter-rouge">glob</code>! We can use functions from modules by going <code class="language-plaintext highlighter-rouge">&lt;module&gt;.&lt;function&gt;()</code>, so we see <code class="language-plaintext highlighter-rouge">glob.glob()</code> here.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/usr/bin/env python3                                                                                                        
+import os
+import sys
+import glob
+
+fileList = glob.glob("../data/*.txt")
+for i in range(0,len(fileList)):
+    print(fileList[i])
+exit;
+</code></pre></div></div>
+
+<p>Let’s run it</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python loopFiles.pl
+</code></pre></div></div>
+
+<p>If that did not work, <code class="language-plaintext highlighter-rouge">python</code> on your system likely points to Python 2 and this is written for Python 3. Systems may differentiate the two by requiring Python 3 be specified as</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 loopFiles.pl
+</code></pre></div></div>
+
+<h3 id="using-scripts-to-retrieve-information-from-files">Using scripts to retrieve information from files</h3>
+<p>Scripting is a helpful way to get results from our inevitable thousands of output files. Here are a couple of examples in Perl and Python that build upon looping over the file list. Now, each file is opened and we process them line-by-line to extract the relevant information. Our goal is to make one table with the parameter values for each param file.</p>
+
+<h4 id="getresultspl---a-regex-approach">getResults.pl - a regex approach</h4>
+<p>Scripting languages can use regular expressions (regex) to find patterns in strings. Good text editors can find and replace with text editors too. You can use them to save pieces of the string you care about and work with those further.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/usr/bin/perl -w                                                                                                          
+
+%data = ();
+
+@fileList = glob("../data/file*.txt");
+for $i (0..(scalar(@fileList)-1))
+{
+#    print "$fileList[$i]\n";                                                                                               
+    open FH1,'&lt;',"$fileList[$i]";
+    while(&lt;FH1&gt;)
+    {
+        if (/(\S+)\s+(\S+)/)
+        {
+            $parameter = $1;
+            $value = $2;
+            if ($parameter ne "Parameter")
+            {
+                push @{$data{$parameter}}, $value;
+            }
+        }
+    }
+    close FH1;
+}
+
+print "File";
+foreach $parameter (sort(keys(%data)))
+{
+    print "\t$parameter";
+}
+print "\n";
+
+for $i (0..(scalar(@fileList)-1))
+{
+    print "$fileList[$i]";
+    foreach $parameter (sort(keys(%data)))
+    {
+        print "\t$data{$parameter}[$i]";
+    }
+    print "\n";
+}
+exit;
+</code></pre></div></div>
+
+<p>Scripting languages give you access to helpful <em>data structures</em>. Here, I make a <em>hash</em> called <code class="language-plaintext highlighter-rouge">data</code>, which is denoted by the <code class="language-plaintext highlighter-rouge">%</code>. Hashes have two parts, the <em>key</em> and the <em>value</em>. This is different from an <em>array</em> where you only need to know the element number to access the value - it can be a string too. And here, I actually make a hash of arrays, where each key (a,b,c) gives us the values from the three different files. I then loop back over the data structure to print a matrix that we might work with in R.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl getReults.pl
+</code></pre></div></div>
+
+<h4 id="getresultspy---splitting-lines-and-tuples-for-keys">getResults.py - splitting lines and tuples for keys</h4>
+<p>Python can use regex too, but here I simply apply some prior knowledge about the param files to extract what I want. Python also uses hashes, but here the data structure is called a <em>dictionary</em> or <em>dict</em>. Here, we actually have a two-dimensional dictionary where each key is a <em>tuple</em>.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/usr/bin/env python3                                                                                                      
+import os
+import sys
+import glob
+
+data = {}
+
+fileList = glob.glob("../data/file*.txt")
+for i in range(0,len(fileList)):
+    InFile = open (fileList[i], 'r')
+    for Line in InFile:
+        Line = Line.strip('\n')
+        ElementList = Line.split('\t')
+        if (len(ElementList) &gt; 1) and (ElementList[0] != "Parameter"):
+            data[(i,ElementList[0])] = ElementList[1]
+
+print('File\tParameter\tValue',end='\n')
+for j,k in sorted(data.keys()):
+    print(fileList[j],'\t',k,'\t',data[(j,k)],end='\n')
+exit;
+</code></pre></div></div>
+
+<p>You might notice that when printing here, we access the keys a bit more efficiently than the Perl case and print out a file that would be more appropriate for tidyverse R packages, so you can start to see how things fit together here.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 getReults.py
+</code></pre></div></div>
+
+<h3 id="compiled-code">Compiled Code</h3>
+<p>Common examples of compiled languages are C and C++. They implement low-level functions compared to interpreted/scripting languages (e.g. it would take some creativity to re-implement the glob function), but they are more efficient with memory allocation and potentially faster. C and C++ underly many of the workhorses of the genomics field, such as BWA, BLAST, and RAxML.</p>
+
+<p>To generate an executable program from the C code, we will run the gcc compiler as follows:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc -Wall -o betaSolver betaSolver.c solveBeta.c
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">-Wall</code> is telling gcc to print warning flags which you will often see when building popular software applications. Our source code is in two different files <code class="language-plaintext highlighter-rouge">betaSolver.c</code> and <code class="language-plaintext highlighter-rouge">solveBeta.c</code>, and we use <code class="language-plaintext highlighter-rouge">-o</code> to indicate the output program <code class="language-plaintext highlighter-rouge">betaSolver</code>
+You should now have the compiled C program <code class="language-plaintext highlighter-rouge">betaSolver</code>. Give it a try! Pull up the help menu and then see if you can get the program to do what it should.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./betaSolver -h
+</code></pre></div></div>
+
+<p>You almost never compile programs by invoking gcc yourself though. This would leave a lot of wiggle room for user errors. Thus, programs sometimes come with a Makefile. There is one to compile the <code class="language-plaintext highlighter-rouge">betaSolver</code> program for you to save some typing. Let’s see it in action.
+First, delete the previous application
+	rm betaSolver
+Now, let’s run the Makefile - this is very simple
+	make
+You will now see that <code class="language-plaintext highlighter-rouge">betaSolver</code> has returned.</p>
+
+<p>There will often be frustrating moments when compiling a program that you want to use, because you will run make and it will stop compiling with errors and give you very cryptic messages. As programs become very complex, there can be many external libraries that a program depends on. A step that happens with compiling is <em>linking</em> all of the bits of code scattered across a computer into a single computer-readable program. Let’s break our program.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make clean
+mv betaSolver.h wrong.h
+make
+</code></pre></div></div>
+<p>Makefiles sometimes come with a <em>clean</em> option, so that all of the compiled code is removed. We then change the name of our helper file to <code class="language-plaintext highlighter-rouge">wrong.h</code> so the compiler no longer fins the correct one. You will now get a error that stops the compiler. This is an easy issue to diagnose from the error message, but sometimes it is not. Often it is a linking problem and we will revisit this when compiling some crucial population genomic programs.</p>
+
+<h3 id="wrap-up">Wrap up</h3>
+<p>You have now logged onto the cluster edited some files and moved them around. You have transferred files between your computer and the cluster. You have successfully run some some scripts and compiled a program. Some system issues may arise that take longer to diagnose than in the time allowed here and we will troubleshoot those in the coming week in preparation for Falcon Phase Part 1.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/EvolutionaryGenomics/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Evolutionary Genomics 2021</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Evolutionary Genomics 2021</li><li><a class="u-email" href="mailto:george.tiley@duke.edu">george.tiley@duke.edu</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/gtiley"><svg class="svg-icon"><use xlink:href="/EvolutionaryGenomics/assets/minima-social-icons.svg#github"></use></svg> <span class="username">gtiley</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Genomics class with focus on contemporary sequencing technologies and non-model organisms</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
