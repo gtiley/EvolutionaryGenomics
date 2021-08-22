@@ -5,7 +5,7 @@ import glob
 
 data = {}
 
-fileList = glob.glob("../data/file*.txt")
+fileList = glob.glob("../data/*.params")
 for i in range(0,len(fileList)):
     InFile = open (fileList[i], 'r')
     for Line in InFile:
