@@ -70,7 +70,7 @@ mv welcomeMessage.txt welcomeMessage.YOUR_NAME.txt
 scp welcomeMessage.YOUR_NAME.txt YOUR_USER_NAME@dcc-login.oit.duke.edu:~/introduction
 ssh YOUR_USER_NAME@dcc-login.oit.duke.edu
 cd introduction
-cp welcomeMessage.YOUR_NAME.txt /datacommons/yoderlab/users/gtiley/evolutionaryGenomics/introduction
+cp welcomeMessage.YOUR_NAME.txt /datacommons/yoderlab/users/gtiley/evolutionaryGenomics/introduction/messages
 ```
 After everybody has their edited welcome messages available, we will update the people [page](https://gtiley.github.io/EvolutionaryGenomics/people/) using a script. What exactly is a script?
 
