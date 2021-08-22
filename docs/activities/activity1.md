@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Getting started with computing
-permalink: /labs/activity1/
+permalink: /labs/introduction/
 ---
 
 Our first day is simply making sure everybody has the basic tools to participate in the course. There are four goals today:
@@ -60,7 +60,7 @@ In all omics data, we are often iterating over many things (e.g. loci, individua
 
 #### loopFiles.sh - a simple bash script
 The first line is a shebang. This is letting your computer know which interpreter program to use. Our first example is using bash, which will be available on any UNIX system. First, all of the `*,param` files are collected into a single array or list. We then iterate over the number of elements in that array, print the element to the screen, and quit the script.
-```
+```sh
 #!/bin/bash                                                                                                                   
 
 fileList="../data/*.params"
@@ -83,7 +83,7 @@ The file names should now print to your screen.
 
 #### loopFiles.pl - give me Perl
 Perl is a popular scripting language that is the glue of the internet and played a large role in early genomics applications. It still is, but has waned in popularity as various R packages and the more recent Python has exploded in popularity. It will give you more flexibility than bash in the long-term and can be quick to learn. Here, we use the *glob* function to get an array of the file names. We then loop over array elements from their starting position (0) to the end (2) by getting the number of elements in the array with *scalar* and subtracting 1.
-```
+```perl
 #!/usr/bin/perl -w                                                                                                            
 
 @fileList = glob("../data/*.txt");
@@ -100,7 +100,7 @@ perl loopFiles.pl
 
 #### loopFiles.py - Python and its libraries
 Python is certainly the zeitgeist of bioinformatics and genomics today. Python is more recent than Perl. Although they do similar things, there has been a lot of development on improving abstraction and this is supported by many libraries (or modules). These are groups of functions that you let python know you want to use with the `import <module>` syntax. Here we load two very basic modules `sys` and `os`, but a third one we actually use, `glob`! We can use functions from modules by going `<module>.<function>()`, so we see `glob.glob()` here.
-```
+```python
 #!/usr/bin/env python3                                                                                                        
 import os
 import sys
@@ -127,7 +127,7 @@ Scripting is a helpful way to get results from our inevitable thousands of outpu
 
 #### getResults.pl - a regex approach
 Scripting languages can use regular expressions (regex) to find patterns in strings. Good text editors can find and replace with text editors too. You can use them to save pieces of the string you care about and work with those further.
-```
+```perl
 #!/usr/bin/perl -w                                                                                                          
 
 %data = ();
@@ -178,7 +178,7 @@ perl getReults.pl
 
 #### getResults.py - splitting lines and tuples for keys
 Python can use regex too, but here I simply apply some prior knowledge about the param files to extract what I want. Python also uses hashes, but here the data structure is called a *dictionary* or *dict*. Here, we actually have a two-dimensional dictionary where each key is a *tuple*.
-```
+```python
 #!/usr/bin/env python3                                                                                                      
 import os
 import sys
