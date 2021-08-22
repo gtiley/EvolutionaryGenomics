@@ -1,5 +1,5 @@
 Welcome to evolutionary genomics!
 Name = George Tiley
-Research = molecular evolution eukaryotes old and recent
+Research (6 words only) = molecular evolution eukaryotes old and recent
 Lab = Yoder
 Hobby = guitars and music production and baking 
