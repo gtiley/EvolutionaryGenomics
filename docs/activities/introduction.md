@@ -41,14 +41,15 @@ pwd
 ```
 Several things happened here. We *change directory* with `cd` and *list* files with `ls`. These are UNIX commands that will help us navigate the cluster. The `~` is an alias for our home directory, you can put this folder somewhere else if you prefer. We then *make directory* named evolutionaryGenomics with `mkdir`. We then change into that directory and check the location of the *present working directory* with `pwd`.
 
-Now you will log into the cluster. Then you will copy materials from a shared folder to your home directory (on the cluster). You will then move those files from your home directory on the cluster to your computer with a *secure copy* using `scp`. These files are also available on [GitHub](https://github.com/gtiley/EvolutionaryGenomics/tree/main/data/introduction).
+Now you will log into the cluster. Then you will copy materials from a shared folder to your user directory (on the cluster) in our group space where some storage is configured. You will then move those files from your user directory on the cluster to your computer with a *secure copy* using `scp`. These files are also available on [GitHub](https://github.com/gtiley/EvolutionaryGenomics/tree/main/data/introduction).
 ```
 ssh YOUR_USER_NAME@dcc-login.oit.duke.edu
-mkdir evolutionaryGenomics
-cd evolutionaryGenomics
-cp -r /datacommons/yoderlab/users/gtiley/evolutionaryGenomics/introduction .
+cd /hpc/group/bio790s-01-f21
+mkdir YOUR_USER_NAME
+cd YOUR_USER_NAME
+cp -r /hpc/group/bio790s-01-f21/evolutionaryGenomics/introduction .
 exit
-scp -r YOUR_USER_NAME@dcc-login.oit.duke.edu:~/introduction .
+scp -r YOUR_USER_NAME@dcc-login.oit.duke.edu:/hpc/group/bio790s-01-f21/YOUR_USER_NAME/introduction .
 ls
 ```
 
@@ -64,13 +65,13 @@ Again, we *change directory* with `cd` and *list* files with `ls` on our compute
 emacs welcomeMessage.txt
 ```
 There is some information about myself in there. But we want to know about you! Use the arrows to edit the information about yourself. Keep the research interest to 6 words only. Saving changes through a text editor such as emacs requires keyboard shortcuts - `control` + `x` + `s` to save and `control` + `x` + `c` to close. Alternatively, you could open and edit this file with your text editor such as Notepad++ or BBEdit. Please check that you are using UNIX-style line breaks.
-Now we need to rename the file to make it unique. We can rename a file with *move* `mv`. You will then transfer your edited and rename file back to the cluster and you We will then *copy* it to a shared directory using `cp`.
+Now we need to rename the file to make it unique. We can rename a file with *move* `mv`. You will then transfer your edited and rename file back to the cluster and you We will then *copy* it to a shared directory using `cp`. Rather than giving the complete path, we use `../` to go back a directory.
 ```
 mv welcomeMessage.txt welcomeMessage.YOUR_NAME.txt
-scp welcomeMessage.YOUR_NAME.txt YOUR_USER_NAME@dcc-login.oit.duke.edu:~/introduction
+scp welcomeMessage.YOUR_NAME.txt YOUR_USER_NAME@dcc-login.oit.duke.edu:/hpc/group/bio790s-01-f21/YOUR_USER_NAME/introduction
 ssh YOUR_USER_NAME@dcc-login.oit.duke.edu
-cd introduction
-cp welcomeMessage.YOUR_NAME.txt /datacommons/yoderlab/users/gtiley/evolutionaryGenomics/introduction/messages
+cd /hpc/group/bio790s-01-f21/YOUR_USER_NAME/introduction
+cp welcomeMessage.YOUR_NAME.txt ../../evolutionaryGenomics/introduction/messages
 ```
 After everybody has their edited welcome messages available, we will update the people [page](https://gtiley.github.io/EvolutionaryGenomics/people/) using a script. What exactly is a script?
 
@@ -82,7 +83,7 @@ Let's see some simple scripts in action and hint at how they might be useful. In
 In all omics data, we are often iterating over many things (e.g. loci, individuals, populations, bootstrap replicates) to do something repetitive. Let's execute three different scripts that will allow us to loop over the `*.params` files.
 
 #### loopFiles.sh - a simple bash script
-The first line is a shebang. This is letting your computer know which interpreter program to use. Our first example is using bash, which will be available on any UNIX system. First, all of the `*,param` files are collected into a single array or list. We then iterate over the number of elements in that array, print the element to the screen, and quit the script.
+The first line is a shebang. This is letting your computer know which interpreter program to use. Our first example is using bash, which will be available on any UNIX system. First, all of the `*.param` files are collected into a single array or list. We then iterate over the number of elements in that array, print the element to the screen, and quit the script.
 ```sh
 #!/bin/bash                                                                                                                   
 
@@ -92,9 +93,9 @@ do
   echo "$i"
 done
 ```
-Let's run this simple script. We can execute programs that are not in our *path* by specifying the location. If we are in the same folder that we want to execute a program from we would go `./loopFiles.sh` such that `.` means *here*.
+Let's run this simple script on your own system first. We can execute programs that are not in our *path* by specifying the location. If we are in the same folder that we want to execute a program from we would go `./loopFiles.sh` such that `.` means *here*.
 ```
-cd ~/YOUR_PATH/evolutionaryGenomics/introduction/scripts
+cd ~/evolutionaryGenomics/introduction/scripts
 ./loopFiles.sh
 ```
 Already a problem, nothing happens. To run a script this way, we need to let the computer know it is an executable program. `chmod` can be used to change the execute, read, and write permissions of files and folders.
@@ -229,8 +230,44 @@ exit;
 python3 getReults.py
 ```
 
+### Running Programs on the Cluster
+We have *maybe* run scripts on our own systems. We can run those on the cluster too, but there are some rules. Because of how clusters are configured, we need to make a separate *submission script*. This lets the cluster know how much cpu and RAM to allocate to a job and checks that you have permissions to do so. We have an example submission script `testScripts.sh` in our `scripts` folder.
+```sh
+#!/bin/bash
+#SBATCH --job-name=testScripts
+#SBATCH --output=testScripts.log
+#SBATCH --mail-user=YOUR_EMAIL
+#SBATCH --mail-type=FAIL,END
+#SBATCH --time=2:00:00
+#SBATCH --mem-per-cpu=1000M
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --partition=common
+#SBATCH --account=bio790s-01-f21
+[[ -d $SLURM_SUBMIT_DIR ]] && cd $SLURM_SUBMIT_DIR
+
+perl getResults.pl
+python3 getResults.py
+```
+
+We will discuss the SLURM directives in class. The important thing is that you will need to open the submission script to edit YOUR_EMAIL. We then submit the script with `sbatch`. The steps in order will look something like this
+```
+cd scripts
+emacs testScripts.sh
+sbatch testScripts.sh
+```
+When we ran the scripts on our own system, they print to standard out. Your standard output from a submission script will go to the --output. In practice, many programs will generate output files for the important stuff or we can redirect the standard output with something like `python3 getResults.py > pythonResults.txt`. Try editing and re-running the script to see yourself.
+
 ### Compiled Code
 Common examples of compiled languages are C and C++. They implement low-level functions compared to interpreted/scripting languages (e.g. it would take some creativity to re-implement the glob function), but they are more efficient with memory allocation and potentially faster. C and C++ underly many of the workhorses of the genomics field, such as BWA, BLAST, and RAxML.
+
+There is a silly example available for us to practice with. We will do this on the cluster since getting a good C compiler set up for Windows users can be time-consuming and frustrating. This should work for the mac and linux users though on your own systems.
+
+So, go into the `compiledExample` folder. Since you might still be in `/hpc/group/bio790s-01-f21/YOUR_USER_NAME/introduction/scripts`, all you need to do is go
+```
+cd ../compiledExample
+```
 
 To generate an executable program from the C code, we will run the gcc compiler as follows:
 ```
@@ -243,11 +280,11 @@ You should now have the compiled C program `betaSolver`. Give it a try! Pull up 
 ```
 
 You almost never compile programs by invoking gcc yourself though. This would leave a lot of wiggle room for user errors. Thus, programs sometimes come with a Makefile. There is one to compile the `betaSolver` program for you to save some typing. Let's see it in action.
-First, delete the previous application
-	rm betaSolver
-Now, let's run the Makefile - this is very simple
-	make
-You will now see that `betaSolver` has returned.
+We will first delete the application, then run the makefile to re-compile it.
+```
+rm betaSolver
+make
+```
 
 There will often be frustrating moments when compiling a program that you want to use, because you will run make and it will stop compiling with errors and give you very cryptic messages. As programs become very complex, there can be many external libraries that a program depends on. A step that happens with compiling is *linking* all of the bits of code scattered across a computer into a single computer-readable program. Let's break our program.
 ```

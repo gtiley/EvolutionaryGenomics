@@ -20,6 +20,6 @@ Content will be added to the scedule on a weekly basis as the class progresses. 
 | 27 October     | Macroevolution                 |  Orthology and Synteny                               |
 | 3 November     | Macroevolution                 |  Divergence times and rates of evolution             |
 | 10 November    | Macroevolution                 |  Duplication and loss                                |
-| 17 November    | Data Ethics                    |  Using GitHub                                        |
+| 17 November    | Data Ethics                    |  Using git and GitHub                                |
 
-This is only a proposed schedule. Exact activities may change based on time allowed and class interests. Demographic modeling may be removed to make room for a macroevolutionary analysis competition.
+This is only a proposed schedule. Exact activities may change based on time allowed and class interests.
