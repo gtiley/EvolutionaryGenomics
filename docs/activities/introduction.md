@@ -83,7 +83,7 @@ Let's see some simple scripts in action and hint at how they might be useful. In
 In all omics data, we are often iterating over many things (e.g. loci, individuals, populations, bootstrap replicates) to do something repetitive. Let's execute three different scripts that will allow us to loop over the `*.params` files.
 
 #### loopFiles.sh - a simple bash script
-The first line is a shebang. This is letting your computer know which interpreter program to use. Our first example is using bash, which will be available on any UNIX system. First, all of the `*.param` files are collected into a single array or list. We then iterate over the number of elements in that array, print the element to the screen, and quit the script.
+The first line is a shebang. This is letting your computer know which interpreter program to use. Our first example is using bash, which will be available on any UNIX system. First, all of the `*.params` files are collected into a single array or list. We then iterate over the number of elements in that array, print the element to the screen, and quit the script.
 ```sh
 #!/bin/bash                                                                                                                   
 
@@ -110,7 +110,7 @@ Perl is a popular scripting language that is the glue of the internet and played
 ```perl
 #!/usr/bin/perl -w                                                                                                            
 
-@fileList = glob("../data/*.txt");
+@fileList = glob("../data/*.params");
 for $i (0..(scalar(@fileList)-1))
 {
     print "$fileList[$i]\n";
@@ -130,7 +130,7 @@ import os
 import sys
 import glob
 
-fileList = glob.glob("../data/*.txt")
+fileList = glob.glob("../data/*.params")
 for i in range(0,len(fileList)):
     print(fileList[i])
 exit;
@@ -147,7 +147,7 @@ python3 loopFiles.pl
 ```
 
 ### Using scripts to retrieve information from files
-Scripting is a helpful way to get results from our inevitable thousands of output files. Here are a couple of examples in Perl and Python that build upon looping over the file list. Now, each file is opened and we process them line-by-line to extract the relevant information. Our goal is to make one table with the parameter values for each param file.
+Scripting is a helpful way to get results from our inevitable thousands of output files. Here are a couple of examples in Perl and Python that build upon looping over the file list. Now, each file is opened and we process them line-by-line to extract the relevant information. Our goal is to make one table with the parameter values for each params file.
 
 #### getResults.pl - a regex approach
 Scripting languages can use regular expressions (regex) to find patterns in strings. Good text editors can find and replace with text editors too. You can use them to save pieces of the string you care about and work with those further.
@@ -156,7 +156,7 @@ Scripting languages can use regular expressions (regex) to find patterns in stri
 
 %data = ();
 
-@fileList = glob("../data/file*.txt");
+@fileList = glob("../data/*.params");
 for $i (0..(scalar(@fileList)-1))
 {
 #    print "$fileList[$i]\n";                                                                                               
@@ -201,7 +201,7 @@ perl getReults.pl
 ```
 
 #### getResults.py - splitting lines and tuples for keys
-Python can use regex too, but here I simply apply some prior knowledge about the param files to extract what I want. Python also uses hashes, but here the data structure is called a *dictionary* or *dict*. Here, we actually have a two-dimensional dictionary where each key is a *tuple*.
+Python can use regex too, but here I simply apply some prior knowledge about the params files to extract what I want. Python also uses hashes, but here the data structure is called a *dictionary* or *dict*. Here, we actually have a two-dimensional dictionary where each key is a *tuple*.
 ```python
 #!/usr/bin/env python3                                                                                                      
 import os
@@ -210,7 +210,7 @@ import glob
 
 data = {}
 
-fileList = glob.glob("../data/file*.txt")
+fileList = glob.glob("../data/*.params")
 for i in range(0,len(fileList)):
     InFile = open (fileList[i], 'r')
     for Line in InFile:
@@ -295,7 +295,7 @@ make
 Makefiles sometimes come with a *clean* option, so that all of the compiled code is removed. We then change the name of our helper file to `wrong.h` so the compiler no longer fins the correct one. You will now get a error that stops the compiler. This is an easy issue to diagnose from the error message, but sometimes it is not. Often it is a linking problem and we will revisit this when compiling some crucial population genomic programs.
 
 ### Wrap up
-You have now logged onto the cluster edited some files and moved them around. You have transferred files between your computer and the cluster. You have successfully run some some scripts and compiled a program. Some system issues may arise that take longer to diagnose than in the time allowed here and we will troubleshoot those in the coming week in preparation for Falcon Phase Part 1.
+You have now logged onto the cluster edited some files and moved them around. You have transferred files between your computer and the cluster. You have successfully run some some scripts and compiled a program. Some system issues may arise that take longer to diagnose than in the time allowed here and we will troubleshoot those in the coming week in preparation for *de novo* genome assembly.
 
 ### Pro Tip
 It might get annoying over time with typing your password every time you want to do something on the cluster. You can get around this by setting up an rsa key on your computer and then placing the public key in a hidden folder in your home directory on the cluster. Duke has some special instructions about how to set this up in their [guide](https://rc.duke.edu/dcc/dcc-user-guide/) about ssh public keys.
