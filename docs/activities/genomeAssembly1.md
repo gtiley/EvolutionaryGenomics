@@ -12,6 +12,7 @@ Assembling a reference genome *de novo* has become easier over time, with decrea
 5. Compare assemblies that use or do not use long reads
 
 Because each assembly is resource intensive you will run analyses in your `work` directory. You will also work in teams of two.
+
 |Team (Spotter/Driver)                |Strategy                  |Software            |
 |-------------------------------------|--------------------------|--------------------|
 |Mantis (Blake/Melodie)               |Bad kmer - short only     |Abyss               |
@@ -28,7 +29,7 @@ We are not making the most scientific comparison of assemblers, but we should be
 3. MaSurCa - We read the manuscript for this one. A somewhat hybrid algorithm that bins short reads in larger sequences subsequently used for OLC. Capable of using *polished* long reads.
 
 ### Thrips!
-We will focus on a [recently published](https://onlinelibrary.wiley.com/doi/full/10.1111/1755-0998.13189) thrip genome. Why? The genome is small, about 200Mb. We still get to work with a diploid though since the libraries were constructed from a single female. Plus, thrips have a lot of gene duplications that should make things interesting. The authors generated three types of data:
+We will focus on a recently published thrip genome[^1]. Why? The genome is small, about 200Mb. We still get to work with a diploid though since the libraries were constructed from a single female. Plus, thrips have a lot of gene duplications that should make things interesting. The authors generated three types of data:
 1. Vanilla Illumina (60x) 150bp paired-end reads - Basic Illumina library prep protocol with a 500bp insert size. These libraries are ubiquitous to both *de novo* assemblies and population resquencing experiments.
 2. PacBio Sequel (120x) long reads - The Sequel had higher error rates than the current HiFi machines, but are still high quality and compensated by the insane *depth* here. Larger insert sizes are possible, but most of these are around 6Kb.
 3. High-throughput chromosome conformation capture (Hi-C) Illumina (300x) 150bp paired-end reads - These libraries are used for scaffolding, which will be the focus of next week. Cross-linking and digestion of chromatin proteins are used to generate libraries with a range of large inserts. Hi-C data is used in other contexts too, but has been transformative for genome assembly.
@@ -84,3 +85,6 @@ sbatch runQuast.sh
 ```
 
 Can you find the relevant information in the quast output folder? It generates a nice html file that you can view, but you will need to scp it to your local computer. If you do not remember how to do this, have a look at last weeks activity. When your assembly finishes, your will need to edit the quast script to run it on your assembly.
+
+### References
+[^1]: Guo S-K, Cao L-J, Song W, Shi P, Gao Y-F, Gong Y-J, Chen J-C, Hoffmann AA, Wei S-J. 2020. Chromosome level assembly of the melon thrips genome yields insights into evolution of sap-sucking lifestyle and pesticide resistance. Mol Ecol. 20:1110-1125.
