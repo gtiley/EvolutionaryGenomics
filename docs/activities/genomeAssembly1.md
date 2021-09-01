@@ -11,7 +11,7 @@ Assembling a reference genome *de novo* has become easier over time, with decrea
 4. Evaluate contig assembly quality
 5. Compare assemblies that use or do not use long reads
 
-Because each assembly is resource intensive you will run analyses in your `work` directory. You will also work in teams of two.
+Because each assembly is resource intensive you will run analyses in your `/work` directory. You will also work in teams of two.
 
 |Team (Spotter/Driver)                |Strategy                  |Software            |
 |-------------------------------------|--------------------------|--------------------|
