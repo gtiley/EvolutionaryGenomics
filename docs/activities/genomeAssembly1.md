@@ -35,6 +35,7 @@ We will focus on a recently published thrip genome[^1]. Why? The genome is small
 3. High-throughput chromosome conformation capture (Hi-C) Illumina (300x) 150bp paired-end reads - These libraries are used for scaffolding, which will be the focus of next week. Cross-linking and digestion of chromatin proteins are used to generate libraries with a range of large inserts. Hi-C data is used in other contexts too, but has been transformative for genome assembly.
 
 The data has been organized in our folder on the cluster
+
 **Vanilla Illumina**
 ```
 /hpc/group/bio790s-01-f21/evolutionaryGenomics/genomeAssembly1/data/Illumina/SRR11591408_1.fq.gz
