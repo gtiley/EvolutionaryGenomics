@@ -9,14 +9,14 @@ Hopefully some of the team assemblies are done by this point. Last week, we asse
 {:refdef: style="text-align: center;"}
 ![Rao et al. 2014 Fig. 1A]({{site.baseurl}}/images/HiC_Fig1A.png)
 {: refdef}
-Fig. 1A from Rao et al. 2014[^1]- Hi-C library preparation by crosslinking DNA interacting with chromatin and restriction digestion to form a distribution of inserts, some small and some very large. 
+**Fig. 1A from Rao et al. 2014[^1]-** Hi-C library preparation by crosslinking DNA interacting with chromatin and restriction digestion to form a distribution of inserts, some small and some very large. 
 
 Although originally intended to investigate DNA-DNA interactions in the cell, such as enhancers and promoter regions coming in contact with each other by forming *loops*, the range of insert sizes provides the mate information from paired end reads to scaffold entire chromosomes. Although there can be interactions between chromosomes or distal ends of the same chromosome, regions that are physically close together have the most interactions and this is reflected by the frequency that fragments occur in the library. Hi-C libraries can be visualized as 2-d contact maps, where the x- and y-axes are bins of some size and the heatmap intensity is the normalized frequency of a fragment. The scaffolding algorithm finds a path between contigs for scaffolding based on these frequencies. Messy genome assemblies will have contact maps that are very fuzzy while correctly oriented assemblies will generate the most intense signals along the diagonal. 
 
 {:refdef: style="text-align: center;"}
 ![Dudchenko et al. 2017 Fig. S6]({{site.baseurl}}/images/HiCAssembly_FigS6.png)
 {: refdef}
-Fig. S6 from Dudchenko et al. 2017[^2]- Contact map of human genome. Heat map intensity corresponds to frequency of observed contacts within a bin. Because most interactions happen on the same chromosome, the strongest signals are between adjoining regions. Hi-C can also detect interactions between more distant regions, but the correct path is resolved by the graph weights.
+**Fig. S6 from Dudchenko et al. 2017[^2]-** Contact map of human genome. Heat map intensity corresponds to frequency of observed contacts within a bin. Because most interactions happen on the same chromosome, the strongest signals are between adjoining regions. Hi-C can also detect interactions between more distant regions, but the correct path is resolved by the graph weights.
 
 You will continue to run analyses in your `/work` directory. You should use the contigs from your team's assemblies last week, and continue to work in teams. Everybody can run the analyses in their own work directory though.
 
