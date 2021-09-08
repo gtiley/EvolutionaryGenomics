@@ -94,10 +94,11 @@ We will do this activity together in real time if allowed. These visualization s
 First, download [Juicebox](https://github.com/aidenlab/Juicebox/wiki/Download)
 
 If we do not make it to the real-time activity, there are many resources available from the Aiden lab to help guide you:
-https://aidenlab.gitbook.io/juicebox/
-https://github.com/aidenlab/Juicebox/wiki/Juicebox-Assembly-Tools
-https://www.youtube.com/watch?v=xA6CLsG_GAs
-https://www.youtube.com/watch?v=Nj7RhQZHM18
+* [Introduction to contact maps video](https://www.youtube.com/watch?v=Nj7RhQZHM18)
+* [Step-by-step Juicebox tutorial](https://aidenlab.gitbook.io/juicebox/)
+* [Helpful notes](https://github.com/aidenlab/Juicebox/wiki/Juicebox-Assembly-Tools)
+* [Real-time misjoin correction](https://www.youtube.com/watch?v=xA6CLsG_GAs)
+
 
 Try to compare contact maps with others that had a different assembly strategy for generating contigs, how do they look?
 
