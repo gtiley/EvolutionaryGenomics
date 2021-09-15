@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Juicer is now working"
-date:   2021-08-20 00:00:00 -0400
+date:   2021-09-14 00:00:00 -0400
 categories: jekyll update
 ---
 There were some troubles getting juicer to behave on our cluster last week. There were a few fixes needed to get this running.
