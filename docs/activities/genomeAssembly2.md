@@ -25,6 +25,14 @@ Today's goals are:
 2. Scaffold those contigs into your final assembly (3-d DNA)
 3. Inspect the contact maps visually (3-d DNA)
 
+
+First, we will be doing some copying and uncompressing on the cluster that takes a little more bandwith than we should be using on the head node. Let's get a processor on the compute node
+```
+srun --ntasks=1 --cpus-per-task=1 --mem-per-cpu=4gb --partition=common --account=bio790s-01-f21 --pty bash -i
+```
+
+If you now check your running jobs with `squeue -u YOUR_NETID`, you should now see an interactive session that says "bash"
+
 We are using tools from the Liberman-Aiden lab and largely following their software tutorials on [juicer](https://github.com/aidenlab/juicer/wiki/Running-Juicer-on-a-cluster) and [3d-dna](https://aidenlab.org/assembly/manual_180322.pdf). To configure the software requires some careful specification of directories and input files. Much of this has been pre-configured in
 ```
 /hpc/group/bio790s-01-f21/evolutionaryGenomics/genomeAssembly2
@@ -50,11 +58,13 @@ emacs getRestrictionSites.sh
 #sbatch getRestrictionSites.sh
 ```
 
-The Hi-C data comes as fastq files that need to be aligned to the contigs. If everybody copied these files, that would be a silly waste of disk space and take a little longer. We are going to create symbolic links to the original files, so everybody has through their own work directory structure, but without taking up so many bytes
+We would normally like to use symbolic links to access fastq files, but this seemed to cause some problems for juicer. Instead, we will all have copies of the fastq files in our work directories. Furthermore they need to be decompressed and renamed as \*\_R1.fastq and \*\_R2.fastq 
 ```
 cd ../../HiC-scaffolding/fastq
-ln -s /hpc/group/bio790s-01-f21/evolutionaryGenomics/genomeAssembly1/data/Hi-C/SRR11601864_R1.fastq SRR11601864_R1.fastq
-ln -s /hpc/group/bio790s-01-f21/evolutionaryGenomics/genomeAssembly1/data/Hi-C/SRR11601864_R2.fastq SRR11601864_R2.fastq
+gunzip SRR11601864_R1.fq.gz
+gunzip SRR11601864_R2.fq.gz
+mv SRR11601864_R1.fq SRR11601864_R1.fastq
+mv SRR11601864_R2.fq SRR11601864_R2.fastq
 ``` 
 
 You should now be ready to run juicer. We will go back to the HiC-scaffolding directory where we will run the juicer script. Be careful to edit it correctly. You will need to provide the correct path of the juicedir `-D`, the reference fasta `-z`, the chrom.sizes file `-p`, and the restriction site fragment size file `-y`. Provide the correct path to the `juicer.sh` script in your juicedir/scripts folder too.
