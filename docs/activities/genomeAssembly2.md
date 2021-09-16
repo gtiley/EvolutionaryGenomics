@@ -86,8 +86,8 @@ Juicer should have produced a file called merged_nodups.txt - this is the list o
 For example, what happens if you increase the mapping quality threshold? Maybe make a few changes that you think will help prevent misjoins.
 ```
 cd YOUR_WORK_DIR/evolutionaryGenomics/genomeAssembly2/HiC-scaffolding
-emacs runJuicer.sh
-#sbatch runJuicer.sh
+emacs run3dDNA.sh
+#sbatch run3dDNA.sh
 ```
 
 This should produce three important files:
