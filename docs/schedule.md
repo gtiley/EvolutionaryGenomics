@@ -13,7 +13,7 @@ Content will be added to the scedule on a weekly basis as the class progresses. 
 |  8 September   | Genome Assembly                |  [Scaffolding with Hi-C]({{site.baseurl}}/labs/genomeAssembly2/)   |
 | 15 September   | Genome Assembly                |  [Annotating a genome]({{site.baseurl}}/labs/genomeAssembly3/)     |
 | 22 September   | Genome Assembly                |  Assembly Synthesis Day                                            |
-| 29 September   | Population Genomics            |  Variant Calling and Filtering                                     |
+| 29 September   | Population Genomics            |  [Variant Calling and Filtering]({{site.baseurl}}/labs/populationGenomics1/)                                    |
 | 6 October      | Field Trip to GCB              |  No lab today                                                      |
 | 13 October     | Population Genomics            |  Population Structure                                              |
 | 20 October     | Population Genomics            |  Outlier detection and sliding windows                             |
