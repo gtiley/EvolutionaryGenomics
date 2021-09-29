@@ -31,6 +31,7 @@ There will be a lot of new tools introduced very quickly here.
 * GATK
 * bcftools
 * vcftools
+
 A lot of these have been pre-configured on the cluster for our use, but be warned, getting some installed correctly on your own cluster or local machine can be time-consuming and frustrating. There are some tricks in some cases, such as using a docker container for GATK. We will make extensive use of the module system today, which should handle most of our library linking problems.
 
 Our data today and for the next few weeks will be sparrows[^1]. There is a reference genome and 10 individuals per population. The study is focused on three populations, which we will explore when we read the paper and perform some downstream analyses. Start by copying today's folder with the data and some pre-configured scripts over to work.
@@ -68,14 +69,19 @@ perl bwa.pl
 ```
 
 ### Genotyping
-Haplotype-based genotypers are probably regarded as the best and include GATK and FreeBayes. They also have to make some assumptions that may not always be appropriate though. bcftools is also capable doing the genotyping for you and will be a lot faster. ANGSD is a very intersting option that is advantageous under some conditions. We will use GATK in-part because of it's popularity but remain open that other choices are good and perhaps preferable under some scenarios. 
+Haplotype-based genotypers are arguably regarded as the best based on benchmarking studies and include GATK and FreeBayes. They also have to make some assumptions that may not always be appropriate though. bcftools is also capable doing the genotyping for you and will be a lot faster. ANGSD is a very intersting option that is advantageous under some conditions. We will use GATK in-part because of it's popularity but remain open that other choices are good and perhaps preferable under some scenarios. 
+{:refdef: style="text-align: center;"}
+![Poplin et al. 2018 Fig. S6]({{site.baseurl}}/images/GATK_Fig2.jpeg)
+{: refdef}
+**Fig. 2 from Poplin et al. 2018[^2]-** Local re-alignments are performed in regions determined to have variation from the bam (active regions). The read distributions are used to detect haplotype combinations and ultimately estimate the genotype likelihoods. 
+
 
 The basic commands look something like this:
 ```bash
 picard MarkDuplicates I=ind1.sorted.bam O=ind1.marked.bam M=ind1.metrics.txt                                                                
 gatk HaplotypeCaller -R reference.fasta -I ind1.marked.bam -O ind1.g.vcf -ERC GVCF --native-pair-hmm-threads 4 
 ```
-But again, this step needs to be repeated for all individuals! Remember to edit the Slurm-Specific parts of the Perl script before running! Have a look at how we loop over the individuals based on the available bams and write out the relevant SLURM scripts that will do the work for us. It is possible to accomplish this with job arrays through SLURM too, but this is simply how I learned to do things. If you are using the reads already filtered for mapping quality, you will need to change the script accordingly.
+But again, this step needs to be repeated for all individuals! Remember to edit your email in the Perl script before running! Have a look at how we loop over the individuals based on the available bams and write out the relevant SLURM scripts that will do the work for us. It is possible to accomplish this with job arrays through SLURM too, but this is simply how I learned to do things. If you are using the reads already filtered for mapping quality, you will need to change the script accordingly. I also commented out the final sbatch command the submit the jobs in case you want to run it and see what happens first. When you are ready to submit all of the jobs, uncomment this.
 ```
 cd ../genotying
 perl gatkGVCF.pl
@@ -95,7 +101,7 @@ sbatch gatkFilter.sh
 ```
 
 ### Filtering
-We have already done a bit of light filtering based on some features such as strand biases and mapping, but setting some filters require probing of our candidate variants. Perhaps most important is depth. We want to get rid of sites with low mean depth and mask variants in individuals with low depth. High depth can be a problem too if it is greater than expected, as it likely represents paralogy or other mapping issues[^2]. A number of depth filters have been proposed, but a simple rule is 2x the mean depth. This should address problems from recent or tandem duplicates - older duplicates that have moved throughout the genome should hopefully have enough difference in their mapping scores to be viable. We will also look for odd individuals that we would be suspicious about based on heterozygosity and allele balance. We will set some threshold of missing data too.
+We have already done a bit of light filtering based on some features such as strand biases and mapping, but setting some filters require probing of our candidate variants. Perhaps most important is depth. We want to get rid of sites with low mean depth and mask variants in individuals with low depth. High depth can be a problem too if it is greater than expected, as it likely represents paralogy or other mapping issues[^3]. A number of depth filters have been proposed, but a simple rule is 2x the mean depth. This should address problems from recent or tandem duplicates - older duplicates that have moved throughout the genome should hopefully have enough difference in their mapping scores to be viable. We will also look for odd individuals that we would be suspicious about based on heterozygosity and allele balance. We will set some threshold of missing data too.
 
 Here vcftools is used to generate a number of summary statistics about the post-GATK-filtered vcf. We can then take those files to look at the distributions in R. We will do this together in real-time, but I largely follow the recommendations from the [speciation genomics workshop](https://speciationgenomics.github.io/filtering_vcfs/). These are the flags we will use to get some helpful information:
 * --freq2 (allele frequency - relevant to mac filter)
@@ -114,4 +120,5 @@ Note that we have done this in a way where GATK ignores parts of the genome wher
 
 ### References
 [^1]: Elgvin TO, et al. 2017. The genomic mosaicism of hybrid speciation. Sci Adv. 3:e1602996.
-[^2]: Li H. 2014. Toward better understanding of artifacts in variant calling from high-coverage samples. Bioinformatics 30:2843-2851.
+[^2]: Poplin R, et al. 2018. Scaling accurate genetic variant discovery to tens of thousands of samples. bioRxiv doi:10.1101/201178
+[^3]: Li H. 2014. Toward better understanding of artifacts in variant calling from high-coverage samples. Bioinformatics 30:2843-2851.
