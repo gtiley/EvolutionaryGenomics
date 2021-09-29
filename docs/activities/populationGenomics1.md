@@ -16,11 +16,11 @@ Again, we will work in teams of two. Genotyping will use many cpus and disk spac
 |Team (Spotter/Driver)                |Mapping Score|Variant Filters               |
 |-------------------------------------|-------------|------------------------------|
 |Mantis (Blake/Tristan F-B)           |none     	| Basic                        |
-|Ctenophore (Carlos/Tristan F)        |none         | Basic + depth                |
-|Raptor (Elissa/Gabbi)                |none         | Basic + depth + mac          |
-|Big Bluestem (Ian/Melodie)           |q30          | Basic + depth                |
+|Ctenophore (Ian/Carlos)              |none         | Basic + depth                |
+|Raptor (Elissa/Tristan F)            |none         | Basic + depth + mac          |
+|Big Bluestem (Melodie)               |q30          | Basic + depth                |
 |Polyploid Admixed Yeast (Elise/Gabi) |q30          | Basic + depth + mac          |
-|Scaly Tree Fern (Hannah/Karn)        |q30          | Basic + depth + mac + miss   |
+|Scaly Tree Fern (Hannah/Karn/Marta)  |q30          | Basic + depth + mac + miss   |
 |Mouse Lemur (Lotus/Shannon)          |q30          | Brutal (GQ > 60 + no missing)|
 
 ### Setup
