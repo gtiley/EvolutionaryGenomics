@@ -32,6 +32,7 @@ There will be a lot of new tools introduced very quickly here.
 * bcftools
 * vcftools
 
+
 A lot of these have been pre-configured on the cluster for our use, but be warned, getting some installed correctly on your own cluster or local machine can be time-consuming and frustrating. There are some tricks in some cases, such as using a docker container for GATK. We will make extensive use of the module system today, which should handle most of our library linking problems.
 
 Our data today and for the next few weeks will be sparrows[^1]. There is a reference genome and 10 individuals per population. The study is focused on three populations, which we will explore when we read the paper and perform some downstream analyses. Start by copying today's folder with the data and some pre-configured scripts over to work.
