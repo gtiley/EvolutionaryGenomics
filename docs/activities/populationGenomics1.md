@@ -70,7 +70,7 @@ perl bwa.pl
 ```
 
 ### Genotyping
-Haplotype-based genotypers are arguably regarded as the best based on benchmarking studies and include GATK and FreeBayes. They also have to make some assumptions that may not always be appropriate though. bcftools is also capable doing the genotyping for you and will be a lot faster. ANGSD is a very intersting option that is advantageous under some conditions. We will use GATK in-part because of it's popularity but remain open that other choices are good and perhaps preferable under some scenarios. 
+Haplotype-based genotypers are arguably regarded as the best based on benchmarking studies and include GATK and FreeBayes. They also have to make some assumptions that may not always be appropriate though. bcftools is also capable doing the genotyping for you and will be a lot faster. It can similarly solve haplotype phase, but does not perform this haplotype-based realignment of active regions, it calculated the genotype likelihoods per-site from the bam directly. ANGSD is a very intersting option that uses uncertainty in the data by weighting with genotype likelihoods rather than trying to make calls - this can be advantageous in some cases but not always compatible with downstream analyses. We will use GATK in-part because of it's popularity but remain open that other choices are good and perhaps preferable under some scenarios.
 {:refdef: style="text-align: center;"}
 ![Poplin et al. 2018 Fig. S6]({{site.baseurl}}/images/GATK_Fig2.jpg)
 {: refdef}
