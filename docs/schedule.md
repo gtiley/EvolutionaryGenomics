@@ -15,7 +15,7 @@ Content will be added to the scedule on a weekly basis as the class progresses. 
 | 22 September   | Genome Assembly                |  Assembly Synthesis Day                                            |
 | 29 September   | Population Genomics            |  [Variant Calling and Filtering]({{site.baseurl}}/labs/populationGenomics1/)                                    |
 | 6 October      | Field Trip to GCB              |  No lab today                                                      |
-| 13 October     | Population Genomics            |  Population Structure                                              |
+| 13 October     | Population Genomics            |  [Population Structure]({{site.baseurl}}/labs/populationGenomics2/)                                              |
 | 20 October     | Population Genomics            |  Outlier detection and sliding windows                             |
 | 27 October     | Population Genomics            |  Filterathon                                                       |
 | 3 November     | Macroevolution                 |  Orthology and Synteny                                             |
