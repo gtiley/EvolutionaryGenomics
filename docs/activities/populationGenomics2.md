@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Variant Calling and Filtering
+title: Population Structure
 permalink: /labs/populationGenomics2/
 ---
 
@@ -10,7 +10,7 @@ Today, you will download a VCF for mouse lemurs from the cluster to your local m
 
 ```
 cd ~/evolutionaryGenomics
-scp -r YOUR_NETID@duke.oit.duke.edu:/hpc/group/bio790s-01-f21/evolutionaryGenomics/populationGenomics2 .
+scp -r YOUR_NETID@dcc-login.oit.duke.edu:/hpc/group/bio790s-01-f21/evolutionaryGenomics/populationGenomics2 .
 ```
 
 A few steps in vcf tools. We use it in our genotyping discussion to kick out low-quality variants. We can also use it to thin out SNPs in LD (needed for some structure analyses) and sliding window analyses. The sliding window analyses are based on population pairs, for which the individuals are put into a list from a larger metadata table.
