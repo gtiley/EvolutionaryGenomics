@@ -13,13 +13,13 @@ Content will be added to the scedule on a weekly basis as the class progresses. 
 |  8 September   | Genome Assembly                |  [Scaffolding with Hi-C]({{site.baseurl}}/labs/genomeAssembly2/)   |
 | 15 September   | Genome Assembly                |  [Annotating a genome]({{site.baseurl}}/labs/genomeAssembly3/)     |
 | 22 September   | Genome Assembly                |  Assembly Synthesis Day                                            |
-| 29 September   | Population Genomics            |  [Variant Calling and Filtering]({{site.baseurl}}/labs/populationGenomics1/)                                    |
+| 29 September   | Population Genomics            |  [Variant Calling and Filtering]({{site.baseurl}}/labs/populationGenomics1/)|
 | 6 October      | Field Trip to GCB              |  No lab today                                                      |
-| 13 October     | Population Genomics            |  [Population Structure]({{site.baseurl}}/labs/populationGenomics2/)                                              |
-| 20 October     | Population Genomics            |  Outlier detection and sliding windows                             |
-| 27 October     | Population Genomics            |  Filterathon                                                       |
-| 3 November     | Macroevolution                 |  Orthology and Synteny                                             |
-| 10 November    | Macroevolution                 |  Divergence times and rates of evolution                           |
-| 17 November    | Macroevolution                 |  Duplication and loss                                              |
+| 13 October     | Population Genomics            |  [Population Structure]({{site.baseurl}}/labs/populationGenomics2/)|
+| 20 October     | Population Genomics            |  Math Day                                                          |
+| 27 October     | Macroevolution                 |  [Synteny]({{site.baseurl}}/labs/macroevolution1/)                 |
+| 3 November     | Macroevolution                 |  Divergence times and rates of evolution                           |
+| 10 November    | Projects                       |  Project working day                                               |
+| 17 November    | Project                        |  Project reports                                                   |
 
-This is only a proposed schedule. Exact activities may change based on time allowed and class interests.
+The schedule has been finalized at this point and topics will no longer change.
