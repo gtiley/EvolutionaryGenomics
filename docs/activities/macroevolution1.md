@@ -73,5 +73,5 @@ The example files used for the circos plot based on the MCScanX results are in `
 
 For those interested, we can walk through the install. Circos can be downloaded [here](http://circos.ca/software/download/). It is completely written in Perl, so does not require compiling, but requires the installation of several Perl modules. I decided to re-install for class and it took me about 10 minutes, but remember my first time took hours...maybe days?
 
-[^1] Carey SB, et al. 2021. Gene-rich UV sex chromosomes harbor conserved regulators of sexual development. Sci Adv. 7:eabh2488.
-[^2] Nakatani Y, et al. 2021. Reconstruction of proto-vertebrate, proto-cyclostome and proto-gnathostome genomes. Nat Comms. 12:4489.
+[^1]: Carey SB, et al. 2021. Gene-rich UV sex chromosomes harbor conserved regulators of sexual development. Sci Adv. 7:eabh2488.
+[^2]: Nakatani Y, et al. 2021. Reconstruction of proto-vertebrate, proto-cyclostome and proto-gnathostome genomes. Nat Comms. 12:4489.
