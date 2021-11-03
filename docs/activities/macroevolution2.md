@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Genome Architecture
+title: Divergence Times and Rates of Evolution
 permalink: /labs/macroevolution2/
 ---
 
@@ -13,14 +13,14 @@ Species trees calibrated to absolute time are important for generally understand
 
 We will continue working in teams to examine these different scenarios. Changing the model is easy as you will see. Setting up the calibrations can be tricky and requires some knowledge of the fossil record. I have prepared in advance a tree where all nodes have high-quality calibrations, but two other cases where we can see what happens when a very precise calibration is placed towards the tips or the root and the others are uncalibrated. The root node always has a fairly vague calibration not particularly grounded in primary fossil evidence, but to make the estimator behave reasonably.
 
-|Team                                 |Model                     |Calibration            |
-|-------------------------------------|--------------------------|-----------------------|
-|Mantis (Blake/Melodie)               |Independent (clock = 2)   |All                    |
-|Ctenophore (Carlos/Gabi)             |Independent (clock = 2)   |Root + Primate only    |
-|Raptor (Elissa/Shannon)              |Independent (clock = 2)   |Root + human-chimp only|
-|Big Bluestem (Ian/Tristan F-B)       |Autocorrelated (clock = 3)|All                    |
-|Polyploid Admixed Yeast (Elise/Marta)|Autocorrelated (clock = 3)|Root + Primate only    |
-|Scaly Tree Fern (Hannah/Tristan F)   |Autocorrelated (clock = 3)|Root + human-chimp only|
+|Team                                 |Model                         |Calibration            |
+|-------------------------------------|------------------------------|-----------------------|
+|Mantis (Blake/Melodie)               |Independent (clock = 2)       |All                    |
+|Ctenophore (Carlos/Gabi)             |Independent (clock = 2)       |Root + Primate only    |
+|Raptor (Elissa/Shannon)              |Independent (clock = 2)       |Root + human-chimp only|
+|Big Bluestem (Ian/Tristan F-B)       |Autocorrelated (clock = 3)    |All                    |
+|Polyploid Admixed Yeast (Elise/Marta)|Autocorrelated (clock = 3)    |Root + Primate only    |
+|Scaly Tree Fern (Hannah/Tristan F)   |Autocorrelated (clock = 3)    |Root + human-chimp only|
 
 
 
@@ -146,6 +146,8 @@ Any estimator will give you an answer, but how do your know it is reliable. And 
 Convergence should look ok, it would benefit from longer runs but this will be very clean data. The runs with all calibrations will converge quickly but the runs with only two will have a lot more error and be messy. For now, take the means and 95% HPDs of divergence times from run 1 (in out.txt or can be calculated from mcmc.txt in R) and enter them into the [google sheet](https://docs.google.com/spreadsheets/d/1J56MJAP7Say_Oum1LZv-ySqkHqKssN7VAcERAoAq7Ug/edit?usp=sharing).
 
 If we finish in time, we will plot the results at the end of class. If you need longer to finish runs, please add results when they are done and we can circulate plots later.
+
+### References
 
 [^1]: dos Reis M, Yang Z. 2011. Approximate likelihood calculation on a phylogeny for Bayesian estimation of divergence times. Mol Biol Evol. 28:2161-2172.
 [^2]: Yang Z. 2007. PAML 4: phylogenetic analysis by maximum likelihood. Mol Biol Evol. 24:1586-1591.
