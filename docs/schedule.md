@@ -18,7 +18,7 @@ Content will be added to the scedule on a weekly basis as the class progresses. 
 | 13 October     | Population Genomics            |  [Population Structure]({{site.baseurl}}/labs/populationGenomics2/)|
 | 20 October     | Population Genomics            |  Math Day                                                          |
 | 27 October     | Macroevolution                 |  [Synteny]({{site.baseurl}}/labs/macroevolution1/)                 |
-| 3 November     | Macroevolution                 |  Divergence times and rates of evolution                           |
+| 3 November     | Macroevolution                 |  [Divergence times and rates of evolution]({{site.baseurl}}/labs/macroevolution2/)|
 | 10 November    | Projects                       |  Project working day                                               |
 | 17 November    | Project                        |  Project reports                                                   |
 
