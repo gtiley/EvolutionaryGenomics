@@ -13,14 +13,14 @@ Species trees calibrated to absolute time are important for generally understand
 
 We will continue working in teams to examine these different scenarios. Changing the model is easy as you will see. Setting up the calibrations can be tricky and requires some knowledge of the fossil record. I have prepared in advance a tree where all nodes have high-quality calibrations, but two other cases where we can see what happens when a very precise calibration is placed towards the tips or the root and the others are uncalibrated. The root node always has a fairly vague calibration not particularly grounded in primary fossil evidence, but to make the estimator behave reasonably.
 
-|Team                                 |Model                         |Calibration            |
-|-------------------------------------|------------------------------|-----------------------|
-|Mantis (Blake/Melodie)               |Independent (clock = 2)       |All                    |
-|Ctenophore (Carlos/Gabi)             |Independent (clock = 2)       |Root + Primate only    |
-|Raptor (Elissa/Shannon)              |Independent (clock = 2)       |Root + human-chimp only|
-|Big Bluestem (Ian/Tristan F-B)       |Autocorrelated (clock = 3)    |All                    |
-|Polyploid Admixed Yeast (Elise/Marta)|Autocorrelated (clock = 3)    |Root + Primate only    |
-|Scaly Tree Fern (Hannah/Tristan F)   |Autocorrelated (clock = 3)    |Root + human-chimp only|
+|Team                                 |Model                             |Calibration                |
+|-------------------------------------|----------------------------------|---------------------------|
+|Mantis (Blake/Melodie)               |Independent (clock = 2)           |All                        |
+|Ctenophore (Carlos/Gabi)             |Independent (clock = 2)           |Root + Primate             |
+|Raptor (Elissa/Shannon)              |Independent (clock = 2)           |Root + human-chimp         |
+|Big Bluestem (Ian/Tristan F-B)       |Autocorrelated (clock = 3)        |All                        |
+|Polyploid Admixed Yeast (Elise/Marta)|Autocorrelated (clock = 3)        |Root + Primate             |
+|Scaly Tree Fern (Hannah/Tristan F)   |Autocorrelated (clock = 3)        |Root + human-chimp         |
 
 
 
